@@ -24,11 +24,30 @@ export const auth = betterAuth({
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      // Always show Google's "Choose an account" screen instead of silently
+      // reusing the already-logged-in account (prompt=none/authuser=0).
+      prompt: "select_account",
     },
 
     github: {
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
+  },
+
+  // Google/GitHub are trusted providers — when their (verified) email matches
+  // an existing user, link the account automatically instead of erroring with
+  // "unable_to_link_account".
+  account: {
+    accountLinking: {
+      enabled: true,
+      trustedProviders: ["google", "github"],
+    },
+  },
+
+  // Any OAuth callback failure redirects back to the sign-in page instead of
+  // the default bare "Error" page.
+  onAPIError: {
+    errorURL: "/signin",
   },
 });

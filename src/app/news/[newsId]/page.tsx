@@ -310,4 +310,3 @@ const NewsDetails = async ({
 };
 
 export default NewsDetails;
-

@@ -56,6 +56,49 @@ const MobileNav = ({ navs }: { navs: Navs[] }) => {
           </button>
         </div>
 
+        {/* Search */}
+        <form
+          action="/search"
+          method="get"
+          role="search"
+          className="border-b border-gray-100 px-5 py-3"
+        >
+          <div className="flex items-center gap-2">
+            <label htmlFor="sidebar-search-input" className="sr-only">
+              খবর খুঁজুন
+            </label>
+
+            <input
+              id="sidebar-search-input"
+              type="search"
+              name="q"
+              required
+              placeholder="খবর খুঁজুন..."
+              className="h-10 w-full min-w-0 rounded-lg border border-gray-300 px-3.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"
+            />
+
+            <button
+              type="submit"
+              aria-label="সার্চ করুন"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-600 text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+            </button>
+          </div>
+        </form>
+
         {/* Navigation */}
         <nav className="flex flex-col py-3">
           {/* Home */}
